@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Chat>
+
+    <div class="chat-body">
+
+        @foreach (var chat in Model)
+        {
+            if (chat.Name != null)
+            {
+                <a class="room-btn" asp-controller="Home" asp-action="JoinRoom" asp-route-id="@chat.Id">@chat.Name</a>
+            }
+
+
+        }
+
+
+    </div>
+
