@@ -6,6 +6,7 @@ namespace ChatApp.Models
 {
     public class Chat
     {
+
         public Chat()
         {
             Messages = new List<Message>();
@@ -17,7 +18,8 @@ namespace ChatApp.Models
         //prop for users
         public ICollection<ChatUser> Users { get; set; }
         public ChatType Type { get; set; }
-       
+        
+
     }
 
 }
