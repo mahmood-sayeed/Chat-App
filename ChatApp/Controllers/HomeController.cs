@@ -20,7 +20,6 @@ namespace ChatApp.Controllers
         {
             _ctx = ctx;
         }
-
         public IActionResult Index()
         {
             var chats = _ctx.Chats
