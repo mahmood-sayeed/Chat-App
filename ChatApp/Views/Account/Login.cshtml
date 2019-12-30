@@ -1,10 +1,52 @@
-﻿<div>
-    <form asp-controller="Account" asp-action="Login">
-        <input type="text" name="username" placeholder="Username" />
-        <input type="password" name="password" placeholder="Password" />
-        <button type="submit">Submit</button>
-    </form>
-</div>
+﻿<br /><br /><br />
 <div>
-    <a asp-controller="Account" asp-action="Register">Register</a>
+    <center>
+        <form asp-controller="Account" asp-action="Login">
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tr><td>Username&nbsp;&nbsp;&nbsp;</td><td><input type="text" name="username" placeholder="Username" style="width:190px;border-radius:5px;" /></td></tr>
+                            <tr><td>Password&nbsp;&nbsp;&nbsp;</td><td><input type="password" name="password" placeholder="Password" style="width:190px;border-radius:5px;"  /></td></tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr><td><button type="submit" style="background-color:#342742;color:white;border-radius:5px;height:30px;width:270px">Submit</button></td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </center>
 </div>
+<center>
+    <div>
+        <a asp-controller="Account" asp-action="Register" style="color:#342742;">Register</a>
+    </div>
+</center>
+    @*<link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <center>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" asp-controller="Account" asp-action="Login">
+
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Password" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <div>
+                    <a asp-controller="Account" asp-action="Register">Register</a>
+                </div>
+            </div>
+        </div>
+    </center>*@

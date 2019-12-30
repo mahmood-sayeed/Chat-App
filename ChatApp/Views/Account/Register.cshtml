@@ -1,7 +1,26 @@
-﻿<div>
-    <form asp-controller="Account" asp-action="Register">
-        <input type="text" name="username" placeholder="Username" />
-        <input type="password" name="password" placeholder="Password" />
-        <button type="submit">Register</button>
-    </form>
+﻿<br />
+<br />
+<br />
+<div>
+    <center>
+        <form asp-controller="Account" asp-action="Register">
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tr><td>Username&nbsp;&nbsp;&nbsp;</td><td><input type="text" name="username" placeholder="Username" style="width:190px;border-radius:5px;" /></td></tr>
+                            <tr><td>Password&nbsp;&nbsp;&nbsp;</td><td><input type="password" name="password" placeholder="Password" style="width:190px;border-radius:5px;" /></td></tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr><td><button type="submit" style="background-color:#342742;color:white;border-radius:5px;height:30px;width:270px">Register</button></td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </center>
 </div>
