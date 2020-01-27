@@ -20,6 +20,8 @@ namespace ChatApp.Controllers
         {
             _ctx = ctx;
         }
+
+        //Index- Chat model, chats is a list of Chat model. - Database/AppDbContext.
         public IActionResult Index()
         {
             var chats = _ctx.Chats
@@ -104,6 +106,8 @@ namespace ChatApp.Controllers
         }
 
         [HttpPost]
+
+        //UserRole model
         public async Task<IActionResult> CreateRoom(string name)
         {
             var chat = new Chat

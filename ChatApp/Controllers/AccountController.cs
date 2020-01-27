@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// Controlling login and register, Account View
 namespace ChatApp.Controllers
 {
     public class AccountController:Controller
@@ -26,6 +27,7 @@ namespace ChatApp.Controllers
         public async Task<IActionResult> Login(string username, string password)
         {
             var user = await _userManager.FindByNameAsync(username);
+            // verify from database
             if (user != null)
             {
                 var result = await _signInManager.PasswordSignInAsync(user, password, false, false);
@@ -44,6 +46,7 @@ namespace ChatApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(string username, string password)
         {
+            // Accessing User Model, which is collection of users(interface) from ChatUser model(individual).
             var user = new User
             {
                 UserName = username

@@ -9,18 +9,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+//send receive leave join
+
 namespace ChatApp.Controllers
 {
     [Authorize]
     [Route("[controller]")]
     public class ChatController: Controller
     {
-        private IHubContext<ChatHub> _chat;
+        private IHubContext<ChatHub> _chat; //Hub for sync chat - signalR (ChatHub.cs)
 
         public ChatController(IHubContext<ChatHub> chat)
         {
             _chat = chat;
         }
+
+        //View - Home/Chat.cshtml
 
         [HttpPost("[action]/{connectionId}/{roomId}")]
         public async Task<IActionResult> JoinRoom(string connectionId, string roomId)
@@ -42,7 +46,7 @@ namespace ChatApp.Controllers
             
             [FromServices] AppDbContext ctx)
         {
-
+            //Message model
             var Message = new Message
 {
                 ChatId = roomId,
