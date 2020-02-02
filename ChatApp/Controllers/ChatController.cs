@@ -43,6 +43,7 @@ namespace ChatApp.Controllers
         public async Task<IActionResult> SendMessage(
             int roomId,
             string message, 
+        
             
             [FromServices] AppDbContext ctx)
         {
@@ -60,7 +61,7 @@ namespace ChatApp.Controllers
 
             await _chat.Clients.Group(roomId.ToString())
                 .SendAsync("RecieveMessage", new {
-                    Text = Message.Text,
+                    Text = Transslate.Translate(Message.Text,"sv").Result,
                     Name = Message.Name,
                     Timestamp = Message.Timestamp.ToString("dd/MM/yyyy hh:mm:ss")
 
