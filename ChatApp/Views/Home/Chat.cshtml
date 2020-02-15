@@ -5,11 +5,21 @@
     @foreach (var message in Model.Messages)
     {
         
-        <div class="message">
-            <header>@message.Name : </header>
+    <div class="message">
+        <header>@message.Name :- </header>
+        @if (message.Name == User.Identity.Name)
+        {
             <p>@message.Text</p>
-            <footer>@message.Timestamp</footer>
-        </div>
+        }
+        else
+        {
+            <p>@message.TranslatedText</p>
+        };
+
+        @*<p>@message.Text</p>*@
+
+        <footer>@message.Timestamp</footer>
+    </div>
     }
 
 
@@ -18,6 +28,7 @@
 <form class="chat-input" asp-controller="Home" asp-action="CreateMessage" onsubmit="sendMessage(event)">
     <input type="hidden" name="roomId" value="@Model.Id" />
     <input type="text" name="message" id="message-input" />
+    <input type="hidden" name="name" value="@Model.Name" />
     <button type="submit">Send</button>
 </form>
 
@@ -43,7 +54,7 @@
             header.appendChild(document.createTextNode(data.name))
 
             var p = document.createElement("p")
-            p.appendChild(document.createTextNode(data.text))
+            p.appendChild(document.createTextNode(data.text+"_"))
 
             var footer = document.createElement("footer")
             footer.appendChild(document.createTextNode(data.timestamp))

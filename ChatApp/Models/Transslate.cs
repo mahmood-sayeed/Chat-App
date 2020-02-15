@@ -68,6 +68,7 @@ namespace ChatApp.Models
 
 
         }
+       
 
         public class TranslateData
         {

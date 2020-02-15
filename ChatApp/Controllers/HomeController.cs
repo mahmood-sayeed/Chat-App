@@ -89,12 +89,13 @@ namespace ChatApp.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateMessage(int chatId, string message)
+        public async Task<IActionResult> CreateMessage(int chatId, string message, string name)
         {
             var Message = new Message
             {
                 ChatId = chatId,
-                Text = message,
+                Text = Transslate.Translate(message, "sv").Result,
+                //Text = message,
                 Name = User.Identity.Name,
                 Timestamp = DateTime.Now
             };

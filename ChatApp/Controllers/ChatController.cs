@@ -30,6 +30,7 @@ namespace ChatApp.Controllers
         public async Task<IActionResult> JoinRoom(string connectionId, string roomId)
         {
             await _chat.Groups.AddToGroupAsync(connectionId, roomId);
+            Console.WriteLine(User.Identity.Name);
             return Ok();
         }
 
@@ -52,6 +53,7 @@ namespace ChatApp.Controllers
 {
                 ChatId = roomId,
                 Text = message,
+                TranslatedText = Transslate.Translate(message, "sv").Result,
                 Name = User.Identity.Name,
                 Timestamp = DateTime.Now
             };
@@ -61,10 +63,11 @@ namespace ChatApp.Controllers
 
             await _chat.Clients.Group(roomId.ToString())
                 .SendAsync("RecieveMessage", new {
-                    Text = Transslate.Translate(Message.Text,"sv").Result,
-                    Name = Message.Name,
+                    Text = Message.TranslatedText,
+                    //Text = Transslate.Translate(Message.Text, "sv").Result,
+                    //Text = (Message.Name==User.Identity.Name) ?  Message.Text : Message.TranslatedText,
+                    Message.Name,
                     Timestamp = Message.Timestamp.ToString("dd/MM/yyyy hh:mm:ss")
-
                 });
             return Ok();
         }

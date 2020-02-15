@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -14,6 +15,28 @@
         <a asp-controller="Home" asp-action="Find">Find</a>
         <a asp-controller="Home" asp-action="Private">Private</a>
         <a asp-controller="Account" asp-action="Logout">Logout</a>
+
+        @*@Html.DropDownList("SLanguage",
+        new SelectList(Enum.GetValues(typeof(Transslate.Language)), Enum.GetValues(typeof(Transslate.Language)).ToString(), Enum.GetValues(typeof(Transslate.LanguageText)).ToString(), "Select Language"));*@
+
+
+        @{
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem
+            {
+                Text = "english",
+                Value = "en"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "swedish",
+                Value = "sv",
+                Selected = true
+            });
+        }
+    
+        @Html.DropDownList("langs", listItems)
+   
     </div>
     <div class="main">
         @if (User.Identity.IsAuthenticated)
@@ -38,6 +61,6 @@
         </form>
     </div>
     <script src="~/js/site.js"></script>
-    @RenderSection("Scripts",false)
+    @RenderSection("Scripts", false)
 </body>
 </html>
