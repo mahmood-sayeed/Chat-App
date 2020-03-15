@@ -1,6 +1,7 @@
 ﻿
 <!DOCTYPE html>
-
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<User> SignInManager;
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -11,16 +12,68 @@
 </head>
 <body>
     <div class=navbar>
-        <a asp-controller="Home" asp-action="Index">Home</a>
-        <a asp-controller="Home" asp-action="Find">Find</a>
-        <a asp-controller="Home" asp-action="Private">Private</a>
-        <a asp-controller="Account" asp-action="Logout">Logout</a>
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="Home" asp-action="Find">Find</a>
+            <a asp-controller="Home" asp-action="Private">Private</a>
+
+           
+
+            
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem
+            {
+                Text = "english",
+                Value = "en"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "swedish",
+                Value = "sv",
+                Selected = true
+            });
+
+
+    <div style="align-self:center">
+        &nbsp;&nbsp;
+        @Html.DropDownList("langs", listItems)
+    </div>
+    <div class=navbar>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a asp-controller="Account" asp-action="Logout">Logout @User.Identity.Name</a>
+    </div>
+            
+        }
+
+
 
         @*@Html.DropDownList("SLanguage",
         new SelectList(Enum.GetValues(typeof(Transslate.Language)), Enum.GetValues(typeof(Transslate.Language)).ToString(), Enum.GetValues(typeof(Transslate.LanguageText)).ToString(), "Select Language"));*@
-
-
-        @{
+        @*@{
             List<SelectListItem> listItems = new List<SelectListItem>();
             listItems.Add(new SelectListItem
             {
@@ -34,9 +87,11 @@
                 Selected = true
             });
         }
-    
-        @Html.DropDownList("langs", listItems)
-   
+
+        @Html.DropDownList("langs", listItems)*@
+
+
+
     </div>
     <div class="main">
         @if (User.Identity.IsAuthenticated)
